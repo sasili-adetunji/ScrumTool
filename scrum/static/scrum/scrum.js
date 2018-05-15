@@ -5,12 +5,19 @@
         function ScrumController($scope, $http) {
             $scope.add = function (list, title) {
                     var card = {
+                        list: list.id,
                         title: title
                     };
-                    list.cards.push(card);
+                    $http.post('/scrum/cards/', card)
+                        .then(function(response){
+                           list.cards.push(response.data);
+                        },
+                        function(){
+                            alert('Could not create a card')
+                        })
             };
             $scope.data = [];
-            $http.get('/scrum/lists').then(function(response){
+            $http.get('/scrum/lists/').then(function(response){
                 $scope.data = response.data;
             });
     }

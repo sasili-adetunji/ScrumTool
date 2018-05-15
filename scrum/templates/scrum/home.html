@@ -1,22 +1,29 @@
 {% load staticfiles %}
 <html>
+    <head>
+        <link rel="stylesheet" type="text/css", href="{% static "scrum/css/scrum.css" %}">
+    </head>
     <body ng-app="scrum.demo">
         {% verbatim %}
         <div ng-controller="ScrumController">
-            <div ng-repeat="list in data">
+            <div class="list" ng-repeat="list in data">
                <h3> {{list.name}} </h3>
                 <ul>
                     <li ng-repeat="card in list.cards">
-                        {{ card.title }}
+                        <scrum-card></scrum-card>
                     </li>
                 </ul>
-                <input type="text", ng-model="new_title" />
-                <button ng-click="add(list, new_title)">+</button>
+                <div class="flex">
+                    <input type="text", ng-model="new_title" />
+                    <button ng-click="add(list, new_title)">+</button>
+                </div>
 
             </div>
         </div>
         {% endverbatim %}
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"> </script>
         <script src="{% static  "scrum/scrum.js" %}"> </script>
+        <script src="{% static  "scrum/card.directive.js" %}"> </script>
+
     </body>
 </html>

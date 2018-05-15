@@ -1,13 +1,6 @@
 from rest_framework import serializers
 from .models import List, Card
 
-class ListSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = List
-        fields = [
-          'name',
-        ]
 
 class CardSerializer(serializers.ModelSerializer):
 
@@ -18,4 +11,16 @@ class CardSerializer(serializers.ModelSerializer):
             'description',
             'business_value',
             'story_points'
+        ]
+
+
+class ListSerializer(serializers.ModelSerializer):
+    cards = CardSerializer(read_only=True, many=True)
+
+    class Meta:
+        model = List
+        fields = [
+        'id',
+          'name',
+            'cards',
         ]

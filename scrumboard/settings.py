@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'scrum',
-    'rest_framework'
+    'rest_framework',
+    'auth_api',
 ]
 
 MIDDLEWARE = [

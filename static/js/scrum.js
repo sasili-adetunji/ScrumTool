@@ -1,7 +1,8 @@
 (function(){
     'use strict';
-    angular.module('scrum.demo', [])
-        .controller('ScrumController', ['$scope', '$http', ScrumController]);
+    angular.module('scrum.demo', ['ngRoute'])
+        .controller('ScrumController',
+            ['$scope', '$http', ScrumController]);
         function ScrumController($scope, $http) {
             $scope.add = function (list, title) {
                     var card = {
@@ -17,10 +18,7 @@
                         }
                     );
             };
-            $scope.login = function () {
-                $http.post('/auth_api/login/', {
-                    username: 'sasil', password: 'AjibolA2016?'})
-            };
+
             $scope.data = [];
             $http.get('/scrum/lists/').then(function(response){
                 $scope.data = response.data;

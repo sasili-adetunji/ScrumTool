@@ -14,7 +14,12 @@
                         },
                         function(){
                             alert('Could not create a card')
-                        })
+                        }
+                    );
+            };
+            $scope.login = function () {
+                $http.post('/auth_api/login/', {
+                    username: 'sasil', password: 'AjibolA2016?'})
             };
             $scope.data = [];
             $http.get('/scrum/lists/').then(function(response){

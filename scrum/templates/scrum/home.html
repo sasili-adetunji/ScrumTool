@@ -6,6 +6,9 @@
     <body ng-app="scrum.demo">
         {% verbatim %}
         <div ng-controller="ScrumController">
+            <button ng-click="login()"> Login </button>
+            <a href="/auth_api/logout/">Logout</a><br />
+
             <div class="list" ng-repeat="list in data">
                <h3> {{list.name}} </h3>
                 <ul>
@@ -23,7 +26,9 @@
         {% endverbatim %}
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"> </script>
         <script src="{% static  "scrum/scrum.js" %}"> </script>
+        <script src="{% static  "scrum/scrum.config.js" %}"> </script>
         <script src="{% static  "scrum/card.directive.js" %}"> </script>
+
 
     </body>
 </html>
